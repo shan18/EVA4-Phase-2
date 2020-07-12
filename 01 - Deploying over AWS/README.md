@@ -5,7 +5,7 @@ The goal of this assignment is to deploy a pre-trained MobileNet V2 model over A
 ## Results
 
 The deployed model gave the following results on [this image](images/Yellow-Labrador-Retriever.jpg).  
-<img src="images/results.png" width="600">
+<img src="images/results.png">
 
 *Note:* It might happen that during the first call the API might give a timed out error. If such error happens, call the API again.
 
