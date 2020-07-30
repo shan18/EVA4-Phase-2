@@ -179,18 +179,18 @@ class Dataset:
         """
         return normalize(image, self.mean, self.std, transpose)
     
-    def create_class_imbalance_sampler():
+    def create_class_imbalance_sampler(self):
         """Handle imbalanced dataset through sampler.
 
         Returns:
             sampler
         """
-        count = [0] * self.classes
+        count = [0] * len(self.classes)
         for item in self.train_data.imgs:
             count[item[1]] += 1
         
-        weight_per_class = [0.] * self.classes
-        for i in range(self.classes):
+        weight_per_class = [0.] * len(self.classes)
+        for i in range(len(self.classes)):
             weight_per_class[i] = float(sum(count)) / float(count[i])
         
         weights = [0] * len(self.train_data.imgs)

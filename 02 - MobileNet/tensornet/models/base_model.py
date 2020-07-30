@@ -88,8 +88,8 @@ class BaseModel(nn.Module):
         # Train Model
         self.learner.fit(start_epoch=start_epoch)
     
-    def save(self, filepath, **kwargs):
-        """Save the model.
+    def save_learnable(self, filepath, **kwargs):
+        """Save the learnable model.
 
         Args:
             filepath (str): File in which the model will be saved.
@@ -103,6 +103,14 @@ class BaseModel(nn.Module):
             'optimizer_state_dict': self.learner.optimizer.state_dict(),
             **kwargs
         }, filepath)
+    
+    def save(self, filepath):
+        """Save the model.
+
+        Args:
+            filepath (str): File in which the model will be saved.
+        """
+        torch.save(self, filepath)
     
     def load(self, filepath):
         """Load the model.

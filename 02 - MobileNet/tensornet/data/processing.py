@@ -115,7 +115,7 @@ def data_loader(data, shuffle=True, batch_size=1, num_workers=1, cuda=False, sam
     """
 
     loader_args = {
-        'shuffle': shuffle,
+        'shuffle': shuffle if sampler is None else False,
         'batch_size': batch_size,
         'sampler': sampler,
     }
