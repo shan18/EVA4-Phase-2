@@ -63,7 +63,7 @@ def plot_predictions(data, classes, plot_title, plot_path):
 
     # Initialize plot
     row_count = -1
-    fig, axs = plt.subplots(2, 5, figsize=(10, 10))
+    fig, axs = plt.subplots(2, 5, figsize=(15, 15))
     fig.suptitle(plot_title)
 
     for idx, result in enumerate(data):
@@ -84,10 +84,9 @@ def plot_predictions(data, classes, plot_title, plot_path):
     
     # Set spacing
     fig.tight_layout()
-    fig.subplots_adjust(top=0.88)
 
     # Save image
-    fig.savefig(f'{plot_path}', bbox_inches='tight')
+    fig.savefig(f'{plot_path}')
 
 
 def save_and_show_result(classes, correct_pred=None, incorrect_pred=None, path=None):

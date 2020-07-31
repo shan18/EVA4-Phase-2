@@ -99,10 +99,7 @@ class ModelCheckpoint:
                 save_path = os.path.join(self.path, ckpt_name)
 
             # Save model
-            params = {self.monitor: current_value, **kwargs}
-            if not epoch is None:
-                params['epoch'] = epoch
-            model.save(save_path, **params)
+            model.save(save_path)
             
             # Print log
             if self.verbose > 0:

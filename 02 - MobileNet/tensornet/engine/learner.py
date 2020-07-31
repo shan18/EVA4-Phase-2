@@ -521,7 +521,7 @@ class Learner:
                             self.checkpoint.monitor.split('train_')[-1]
                         ][-1]
                 else:
-                    metric = self.val_metrics[
+                    metric = self.val_metrics[0][
                         self.checkpoint.monitor.split('val_')[-1]
                     ][-1]
             else:
