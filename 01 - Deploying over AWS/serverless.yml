@@ -3,14 +3,14 @@ service: aws-deployment-mobilenetv2
 provider:
   name: aws
   runtime: python3.8
-  stage: dev  # switch to prod during live deployment
+  stage: dev # switch to prod during live deployment
   region: ap-south-1
   timeout: 30
   environment:
     S3_BUCKET: eva4
     MODEL_PATH: mobilenetv2.pt
   iamRoleStatements:
-    - Effect: "Allow"
+    - Effect: 'Allow'
       Action:
         - s3:getObject
       Resource: arn:aws:s3:::eva4/mobilenetv2.pt
@@ -31,13 +31,13 @@ custom:
       - tensorboard
     useStaticCache: true
     useDownloadCache: true
-    cacheLocation: "./cache"
+    cacheLocation: './cache'
 
 package:
   individually: false
   exclude:
     - package.json
-    - package-log.json
+    - package-lock.json
     - node_modules/**
     - cache/**
     - test/**
@@ -50,8 +50,8 @@ package:
 functions:
   classify_image:
     handler: handler.classify_image
-    memorySize: 3008  # MB
-    timeout: 30  # seconds
+    memorySize: 3008 # MB
+    timeout: 30 # seconds
     events:
       - http:
           path: classify

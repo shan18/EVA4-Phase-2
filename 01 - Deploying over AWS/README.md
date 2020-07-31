@@ -14,7 +14,7 @@ _Note:_ It might happen that during the first call the API might give a timed ou
 
 ## Testing on Custom Image
 
-API Link: [https://sow95toe76.execute-api.ap-south-1.amazonaws.com/dev/classify](https://sow95toe76.execute-api.ap-south-1.amazonaws.com/dev/classify)
+API Link: [https://8aih04uf06.execute-api.ap-south-1.amazonaws.com/dev/classify](https://8aih04uf06.execute-api.ap-south-1.amazonaws.com/dev/classify)
 
 Send a POST request to the link above with the image that needs to be classified.
 
