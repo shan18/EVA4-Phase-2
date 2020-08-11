@@ -64,7 +64,10 @@ def classify_image(event, context):
     """Take input image from API and classify it."""
     try:
         # Get image from the request
-        content_type_header = event['headers']['Content-Type']
+        if 'Content-Type' in event['headers']:
+            content_type_header = event['headers']['Content-Type']
+        else:
+            content_type_header = event['headers']['content-type']
         body = base64.b64decode(event['body'])
         print('Body loaded')
 
