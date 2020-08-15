@@ -67,7 +67,7 @@ def similarityTransform(inPoints, outPoints):
     outPts.append([np.int(xout), np.int(yout)])
 
     # Now we can use estimateRigidTransform for calculating the similarity transform.
-    tform = cv2.estimateRigidTransform(np.array([inPts]), np.array([outPts]), False)
+    tform = cv2.estimateAffine2D(np.array([inPts]), np.array([outPts]), False)[0]
     return tform
 
 
