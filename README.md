@@ -1,6 +1,6 @@
 # TSAI - Extensive Vision AI - Phase 2
 
-[![Website](https://img.shields.io/badge/Website-green.svg)](http://orionai.s3-website.ap-south-1.amazon/)
+[![Website](https://img.shields.io/badge/Website-green.svg)](http://orionai.s3-website.ap-south-1.amazonaws.com/)
 
 This repository contains the assignments of the program **EVA4 - Phase 2** conducted by [The School of AI](https://github.com/theschoolofai).
 

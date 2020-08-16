@@ -1,6 +1,6 @@
 # Session 3 -Face Recognition Part 1
 
-[![Website](https://img.shields.io/badge/Website-green.svg)](http://orionai.s3-website.ap-south-1.amazon/)
+[![Website](https://img.shields.io/badge/Website-green.svg)](http://orionai.s3-website.ap-south-1.amazonaws.com/)
 [![Code](https://img.shields.io/badge/Code-blue.svg)](https://github.com/shan18/EVA4-Phase-2/tree/master/03%20-%20Face%20Recognition%20Part%201)
 
 The goal of this assignment is to create and deploy the following models on AWS Lambda and create a static website on AWS S3 for the users to interact with the trained models:
@@ -39,7 +39,7 @@ traced_model.save('resnet34.pt')
 
 ## MobileNetV2
 
-MobileNetV2 trained on a custom dataset using transfer learning. The complete step-by-step explaination to deploy and train this model can be found [here](https://github.com/OrionAI/EVA4-Phase-2/tree/master/02%20-%20MobileNet).
+MobileNetV2 trained on a custom dataset using transfer learning. The complete step-by-step explaination to deploy and train this model can be found [here](https://github.com/shan18/EVA4-Phase-2/tree/master/02%20-%20MobileNet).
 
 ### Result
 
