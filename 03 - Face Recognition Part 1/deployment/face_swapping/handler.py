@@ -42,20 +42,32 @@ def swap_face(event, context):
         picture_source, picture_target = fetch_input_images(event)
 
         # Swap images
-        output = swap_image(picture_source, picture_target, MODEL_PATH)
-        buffer = io.BytesIO()
-        output.save(buffer, format="JPEG")
-        output_bytes = base64.b64encode(buffer.getvalue())
+        status, output = swap_image(picture_source, picture_target, MODEL_PATH)
+        print('status', status)
+        if status == 'success':
+            buffer = io.BytesIO()
+            output.save(buffer, format="JPEG")
+            output_bytes = base64.b64encode(buffer.getvalue())
 
-        return {
-            'statusCode': 200,
-            'headers': {
-                'Content-Type': 'image/jpg',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Credentials': True
-            },
-            'body': output_bytes
-        }
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': True
+                },
+                'body': json.dumps({'result': status, 'data': output_bytes.decode('ascii')})
+            }
+        else:
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': True
+                },
+                'body': json.dumps({'result': status, 'data': output})
+            }
     except Exception as e:
         print(repr(e))
         return {

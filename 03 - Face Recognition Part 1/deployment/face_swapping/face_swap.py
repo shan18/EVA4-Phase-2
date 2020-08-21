@@ -90,8 +90,15 @@ def swap_image(img_source_bytes, img_target_bytes, predictor_path):
     img_source_warped = np.copy(img_target)
 
     # Read array of corresponding points
-    points_source = fbc.getLandmarks(detector, predictor, img_source)
-    points_target = fbc.getLandmarks(detector, predictor, img_target)
+    status, results_source = fbc.getLandmarks(detector, predictor, img_source)
+    if status == 'fail':
+        return status, results_source
+    points_source = results_source
+
+    status, results_target = fbc.getLandmarks(detector, predictor, img_target)
+    if status == 'fail':
+        return status, results_target
+    points_target = results_target
 
     # Convex hull
     hull_index = cv2.convexHull(np.array(points_target), returnPoints=False)
@@ -113,4 +120,4 @@ def swap_image(img_source_bytes, img_target_bytes, predictor_path):
     print('Cloning seamlessly')
     output = cv2.seamlessClone(np.uint8(img_source_warped), img_target, mask, center, cv2.NORMAL_CLONE)
 
-    return Image.fromarray(output)
+    return status, Image.fromarray(output)

@@ -36,7 +36,11 @@ def align_image(predictor_path, image_bytes):
     img = load_image(image_bytes)
 
     # Detect landmarks
-    points = np.array(fbc.getLandmarks(face_detector, landmark_detector, img))
+    status, result = fbc.getLandmarks(face_detector, landmark_detector, img)
+    if status == 'fail':
+        return status, result
+    
+    points = np.array(result)
 
     # Convert image to floating point in the range 0 to 1
     img = np.float32(img) / 255.0
@@ -44,4 +48,4 @@ def align_image(predictor_path, image_bytes):
     # Align image
     output = normalize_image(img, points)
 
-    return Image.fromarray(output)
+    return status, Image.fromarray(output)

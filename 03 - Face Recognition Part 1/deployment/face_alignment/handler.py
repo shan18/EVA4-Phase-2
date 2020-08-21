@@ -41,20 +41,32 @@ def align_face(event, context):
         picture = fetch_input_image(event)
 
         # Align image
-        output = align_image(MODEL_PATH, picture)
-        buffer = io.BytesIO()
-        output.save(buffer, format="JPEG")
-        output_bytes = base64.b64encode(buffer.getvalue())
+        status, output = align_image(MODEL_PATH, picture)
+        print('status', status)
+        if status == 'success':
+            buffer = io.BytesIO()
+            output.save(buffer, format="JPEG")
+            output_bytes = base64.b64encode(buffer.getvalue())
 
-        return {
-            'statusCode': 200,
-            'headers': {
-                'Content-Type': 'image/jpeg',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Credentials': True
-            },
-            'body': output_bytes
-        }
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': True
+                },
+                'body': json.dumps({'result': status, 'data': output_bytes.decode('ascii')})
+            }
+        else:
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': True
+                },
+                'body': json.dumps({'result': status, 'data': output})
+            }
     except Exception as e:
         print(repr(e))
         return {

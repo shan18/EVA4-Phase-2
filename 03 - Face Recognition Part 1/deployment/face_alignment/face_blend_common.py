@@ -236,8 +236,13 @@ def getLandmarks(faceDetector, landmarkDetector, im, FACE_DOWNSAMPLE_RATIO = 1):
         fy=1.0/FACE_DOWNSAMPLE_RATIO, 
         interpolation = cv2.INTER_LINEAR
     )
-  
+
+    print('Detecting faces')
     faceRects = faceDetector(imSmall, 0)
+    if len(faceRects) > 1:
+        return 'fail', 'More than one face detected. Please upload an image with only one face'
+    elif len(faceRects) == 0:
+        return 'fail', 'No face detected. Please upload an image with a face'
 
     if len(faceRects) > 0:
         maxArea = 0
@@ -260,7 +265,8 @@ def getLandmarks(faceDetector, landmarkDetector, im, FACE_DOWNSAMPLE_RATIO = 1):
         
         landmarks = landmarkDetector(im, scaledRect)
         points = dlibLandmarksToPoints(landmarks)
-    return points
+    
+    return 'success', points
 
 
 # Warps an image in a piecewise affine manner.
