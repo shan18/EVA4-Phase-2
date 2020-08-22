@@ -8,6 +8,5 @@ class_names = [
     'Narendra Modi',
     'Priyanka Chopra',
     'Tom Cruise',
-    'Unknow Face',
     'Will Smith'
 ]
