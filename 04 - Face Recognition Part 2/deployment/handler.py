@@ -42,6 +42,8 @@ def fetch_input_image(event):
         content_type_header = event['headers']['Content-Type']
     else:
         content_type_header = event['headers']['content-type']
+    
+    print('Content-Type', content_type_header)
     print('Loading body...')
     body = base64.b64decode(event['body'])
     print('Body loaded')
