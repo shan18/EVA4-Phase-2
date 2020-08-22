@@ -15,3 +15,7 @@ Training MobileNet v2 using transfer learning and deploying it on AWS Lambda. To
 ## Face Alignment and Face Swap
 
 Using dlib to build a face alignment and a face swap model and deploying it on AWS Lambda. To see the code go [here](03%20-%20Face%20Recognition%20Part%201).
+
+## Face Recognition
+
+Using InceptionResnet to train a face recognition model using transfer learning and deploying it on AWS Lambda. To see the code go [here](04%20-%20Face%20Recognition%20Part%202).

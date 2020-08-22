@@ -96,7 +96,7 @@ def classify_image(event, context):
             'body': json.dumps({
                 'file': filename.replace('"', ''),
                 'predicted': prediction,
-                'predicted name': prediction_name,
+                'predicted_name': prediction_name,
             })
         }
     except Exception as e:

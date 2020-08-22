@@ -74,6 +74,8 @@ def get_prediction(image_bytes):
     tensor = transform_image(image_bytes)
     print('Picture transformed')
     prediction_idx = model(tensor).argmax().item()
+    if prediction_idx > 9:
+        return prediction_idx, 'Unknown Face'
     return prediction_idx, class_names[prediction_idx]
 
 
@@ -98,7 +100,7 @@ def recognize_face(event, context):
                 'result': 'success',
                 'data': {
                     'predicted': prediction_idx,
-                    'predicted name': prediction
+                    'predicted_name': prediction
                 }
             })
         }

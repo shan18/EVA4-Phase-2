@@ -20,19 +20,18 @@ All the files and the models have to be deployed to AWS Lambda. The code to depl
 ### Parameters and Hyperparameters
 
 - Training Accuracy: 99.90%
-- Loss: 0.00062
 - Loss Function: Cross Entropy Loss
 - Epochs: 15
 - Optimizer: SGD
 - Learning Rate: 0.01
-- Batch Size: 32
+- Batch Size: 128
 - Scheduler: StepLR
 
 ## Results
 
-|                             Input Image                             | Prediction |
-| :-----------------------------------------------------------------: | :--------: |
-| <img src="./images/smith.jpg" width="300px" alt="centered image" /> | Will Smith |
+|                               Input Image                                | Prediction |
+| :----------------------------------------------------------------------: | :--------: |
+| <img src="./images/emma_stone.jpg" width="300px" alt="centered image" /> | Emma Stone |
 
 ## Dataset Preparation
 
