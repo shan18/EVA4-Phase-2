@@ -121,6 +121,6 @@ class Model:
         if self._is_onnx:
             image = self._to_numpy(image)
             model_input = {self._model.get_inputs()[0].name: image}
-            return np.array(self._model.run(None, model_input)[0][0])
+            return self._model.run(None, model_input)[0][0]
         
         return self._model(image).squeeze(0).detach().numpy().copy()

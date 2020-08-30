@@ -74,7 +74,7 @@ if __name__ == '__main__':
         help='If model is in torch format, convert it to onnx.'
     )
     parser.add_argument(
-        '--threshold', type=float, default=0.75,
+        '--threshold', type=float, default=0.8,
         help='Threshold value for joints estimation'
     )
     parser.add_argument(
