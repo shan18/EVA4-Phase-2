@@ -50,7 +50,7 @@ ResNet architecture with three deconvolutional layers over the last convolution 
   heatmaps for all k key points.
 
 <p align='center'>
-    <img src="./images/architecture.png" width="350px" alt="centered image" /> 
+    <img src="./images/architecture.png" width="900px" alt="centered image" /> 
 </p>
 Comparing the two state-of-the-art network architectures (CPN and Hourglass) with this architecture(1.c) it is found that  three upsampling steps and three levels of non-linearityare used to obtain high-resolution feature maps and heatmaps.   
 But model(1.c) combines the upsampling and convolutional parameters into deconvolutional layers in a much simpler way, without using skip layer connections.
@@ -58,7 +58,7 @@ But model(1.c) combines the upsampling and convolutional parameters into deconvo
 ## Pose Tracking Based on Optical Flow
 
 <p align='center'>
-    <img src="./images/flowbased.png" width="350px" alt="centered image" />
+    <img src="./images/flowbased.png" width="900px" alt="centered image" />
 </p>
 
 The idea behind the Multi-person pose tracking is to assign a unique identication number (id) to a estimated human poses in a frame, and then tracks these human pose
@@ -103,7 +103,7 @@ Finding pose similarity is a grave challenge in this use case.
 They proposed a metric which calculates the body joints distance between two human instances using **Object Keypoint Similarity (OKS)** which is a flow-based pose similarity metric.
 
 <p align='center'>
-    <img src="./images/formula.png" width="120px" alt="centered image" />
+    <img src="./images/formula.png" width="340px" alt="centered image" />
 </p>
 
 where OKS represents calculating the Object Keypoint Similarity (OKS) between two human pose, and J<sub>i</sub><sup>l</sup> represents the propagated joints for J<sub>i</sub><sup>k</sup> from
@@ -112,7 +112,7 @@ frame I<sup>k</sup> to I<sup>l</sup> using optical flow.
 ### Flow-based Pose Tracking Algorithm
 
 <p align='center'>
-    <img src="./images/algorithm.png" width="300px" alt="centered image" />
+    <img src="./images/algorithm.png" width="630px" alt="centered image" />
 </p>
 
 This algorithm combines the above two **Flow-based Pose Similarity** and **Flow-based Pose Similarity**.
