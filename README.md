@@ -19,3 +19,7 @@ Using dlib to build a face alignment and a face swap model and deploying it on A
 ## Face Recognition
 
 Using InceptionResnet to train a face recognition model using transfer learning and deploying it on AWS Lambda. To see the code go [here](04%20-%20Face%20Recognition%20Part%202).
+
+## Human Pose Estimation
+
+Deploy a pre-trained monocular human pose estimation model to AWS Lambda and write a summary of the paper **Simple Baselines for Human Pose Estimation and Tracking**. To see the code go [here](05%20-%20Human%20Pose%20Estimation).

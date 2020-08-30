@@ -66,7 +66,7 @@ if __name__ == '__main__':
         help='MPII config file path'
     )
     parser.add_argument(
-        '-m', '--model', default='pose_resnet_50_256x256.pth.tar',
+        '-m', '--model', default='models/pose_resnet_50_256x256.pth.tar',
         help='Model file path'
     )
     parser.add_argument(
