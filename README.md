@@ -23,3 +23,7 @@ Using InceptionResnet to train a face recognition model using transfer learning 
 ## Human Pose Estimation
 
 Deploy a pre-trained monocular human pose estimation model to AWS Lambda and write a summary of the paper **Simple Baselines for Human Pose Estimation and Tracking**. To see the code go [here](05%20-%20Human%20Pose%20Estimation).
+
+## Generative Advesarial Network
+
+Deploy a GAN which generates Indian Car Images. To see the code go [here](06%20-%20GAN)
