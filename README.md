@@ -27,3 +27,7 @@ Deploy a pre-trained monocular human pose estimation model to AWS Lambda and wri
 ## Generative Advesarial Network
 
 Deploy a GAN which generates Indian Car Images. To see the code go [here](06%20-%20GAN)
+
+## Variational AutoEncoders
+
+Deploy a VAE which can reconstruct Indian Car Images. To see the code go [here](07%20-%20VAE)

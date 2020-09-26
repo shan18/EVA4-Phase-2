@@ -13,3 +13,4 @@ cache/
 *.tgz
 *.tar
 *.onnx
+*.pkl
