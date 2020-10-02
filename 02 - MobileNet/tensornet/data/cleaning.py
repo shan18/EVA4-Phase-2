@@ -27,6 +27,7 @@ def convert_to_rgb_jpg(path):
             img = Image.open(image)
             rgb_img = img.convert('RGB')
             rgb_img.save(f'{os.path.splitext(image)[0]}.jpg')
+            os.remove(image)
         else:
             img = io.imread(image)
             img_dim = img.shape
@@ -39,6 +40,7 @@ def convert_to_rgb_jpg(path):
                 img = Image.open(image)
                 rgb_img = img.convert('RGB')
                 rgb_img.save(f'{os.path.splitext(image)[0]}.jpg')
+                os.remove(image)
 
 
 def rename_jpeg(path):

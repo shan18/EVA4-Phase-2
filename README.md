@@ -31,3 +31,7 @@ Deploy a GAN which generates Indian Car Images. To see the code go [here](06%20-
 ## Variational AutoEncoders
 
 Deploy a VAE which can reconstruct Indian Car Images. To see the code go [here](07%20-%20VAE)
+
+## SRGAN and Neural Style Transfer
+
+Deploy a SRGAN model which can improve small drone images and also deploy a neural style transfer model. To see the code go [here](08%20-%20SRGAN%20and%20Neural%20Style%20Transfer)
