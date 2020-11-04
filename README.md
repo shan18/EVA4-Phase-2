@@ -39,3 +39,7 @@ Deploy a SRGAN model which can improve small drone images and also deploy a neur
 ## Neural Embedding
 
 Deploy a sentiment analysis model which can detect whether a given movie review is positive or negative. To see the code go [here](09%20-%20Neural%20Embedding)
+
+## GRU, Attention Mechanism & Transformers
+
+Deploy a model which can translate German sentences into English. To see the code go [here](10%20-%20Attention%20Mechanism)
