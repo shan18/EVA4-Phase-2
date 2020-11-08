@@ -42,4 +42,4 @@ Deploy a sentiment analysis model which can detect whether a given movie review 
 
 ## GRU, Attention Mechanism & Transformers
 
-Deploy a model which can translate German sentences into English. To see the code go [here](10%20-%20Attention%20Mechanism)
+Deploy a model which can translate German sentences into English. To see the code go [here](11%20-%20Attention%20Mechanism)
