@@ -1,4 +1,4 @@
-# Session 12 - Image Captioning & Text to Images
+# Session 12 - Image Captioning
 
 [![Website](https://img.shields.io/badge/Website-blue.svg)](http://orionai.s3-website.ap-south-1.amazonaws.com/imagecaptioning)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1IwLk3f92IdjiJoSPX3XU0pn7J5HXcYWM?usp=sharing)
