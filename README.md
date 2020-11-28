@@ -47,3 +47,7 @@ Deploy a model which can translate German sentences into English. To see the cod
 ## Image Captioning
 
 Deploy a image caption generation model. To see the code go [here](12%20-%20Image%20Captioning)
+
+## AI for Sound
+
+Train and deploy a simple speech-to-text model. To see the code go [here](13%20-%20AI%20for%20Sound)
