@@ -1,0 +1,4 @@
+.env
+*.tar
+static_cdn
+*.sqlite3

@@ -1,0 +1,163 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="row">
+  <div class="col">
+    <h1 class="heading">
+      <img
+        src="{% static 'images/orionai.png' %}"
+        style="height: 4rem"
+        alt="logo"
+      />&nbsp; Orion AI
+    </h1>
+    <h2 class="heading">Image Captioning</h2>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-11 col-lg-8 mx-auto">
+    <!-- <div class="card shadow p-2 bg-white rounded">
+      <div class="card-body">
+        <div class="card-text"> -->
+    <p align="justify">
+      This is an image caption generation model based on the
+      <i>"Show, Attend, and Tell"</i> paper and trained on the Flickr8k dataset.
+    </p>
+    <p>Parameters used to train the model:</p>
+    <ul>
+      <li>
+        Image Feature Extractor: Pre-trained ResNet-18 on ImageNet dataset
+      </li>
+      <li>Embedding Dimensions: 128</li>
+      <li>Attention Dimensions: 128</li>
+      <li>Decoder Dimensions: 256</li>
+      <li>Batch Size: 32</li>
+      <li>Decoder Learning Rate: 4e-4</li>
+    </ul>
+    <p><b>The model is served using Django on an AWS EC2 instance.</b></p>
+    <!-- </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="row my-4">
+  <div class="col-11 col-lg-6 mx-auto">
+    <form
+      method="POST"
+      class="model-form"
+      action="{% url 'main' %}"
+      data-endpoint="{{ request.build_absolute_uri }}"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="image-upload">Upload an Image</label>
+        <input
+          type="file"
+          class="form-control-file"
+          id="image-upload"
+          accept="image/*"
+        />
+      </div>
+      <div class="row mt-3">
+        <div class="col mx-auto">
+          <button type="submit" class="btn btn-primary">
+            Generate Caption
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row mt-5 d-none" id="output-block">
+  <div class="col-12 col-lg-6 mt-4 ml-auto text-center">
+    <h4 class="text-center">Input Image</h4>
+    <div class="card mx-auto mt-3 shadow bg-white rounded" style="width: 20rem">
+      <img id="input-image" src="" class="card-img-top" alt="source" />
+    </div>
+  </div>
+  <div class="col-12 col-lg-6 mt-4 mr-auto text-center">
+    <h4 class="text-center">Generated Caption</h4>
+    <div class="card mx-auto mt-3 shadow bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title" id="predicted-caption"></h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block javascript %}
+<script>
+  $(document).ready(function () {
+    function renderOutputBlock(
+      outputBlock,
+      outputImage,
+      outputImageSrc,
+      isDisplay
+    ) {
+      outputImage.attr('src', outputImageSrc);
+      if (isDisplay && outputBlock.hasClass('d-none')) {
+        outputBlock.removeClass('d-none');
+      } else if (!isDisplay && !outputBlock.hasClass('d-none')) {
+        outputBlock.addClass('d-none');
+      }
+    }
+
+    function formIndicator(submitButton, text, doSubmit) {
+      if (doSubmit) {
+        submitButton.addClass('disabled');
+        submitButton.html(
+          "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>&nbsp;&nbsp;" +
+            text +
+            '...'
+        );
+      } else {
+        submitButton.removeClass('disabled');
+        submitButton.html(text);
+      }
+    }
+
+    var form = $('.model-form');
+    var formMethod = form.attr('method');
+    var formEndpoint = form.attr('data-endpoint');
+    var formEncType = form.attr('enctype');
+    var outputBlock = $('#output-block');
+    var outputImage = $('#input-image');
+
+    form.submit(function (event) {
+      event.preventDefault();
+      renderOutputBlock(outputBlock, outputImage, '', false);
+      var $this = $(this);
+      var formButton = $this.find("[type='submit']");
+      var formButtonText = formButton.text();
+
+      var formData = new FormData();
+      formData.append('image', $('#image-upload').get(0).files[0]);
+      formData.append(
+        'csrfmiddlewaretoken',
+        $('[name=csrfmiddlewaretoken]').val()
+      );
+
+      formIndicator(formButton, 'Generating', true);
+      $.ajax({
+        method: formMethod,
+        url: formEndpoint,
+        data: formData,
+        enctype: formEncType,
+        processData: false,
+        contentType: false,
+        success: function (responseData) {
+          formIndicator(formButton, formButtonText, false);
+          console.log(responseData);
+          renderOutputBlock(outputBlock, outputImage, responseData.image, true);
+        },
+        error: function (error) {
+          alert('An error occured.');
+          formIndicator(formButton, formButtonText, false);
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}
