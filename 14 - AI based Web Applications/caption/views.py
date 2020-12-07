@@ -1,4 +1,5 @@
 import os
+import random
 
 from django.conf import settings
 from django.shortcuts import render
@@ -7,6 +8,9 @@ from django.views.generic import View
 from django.http import HttpResponseRedirect, JsonResponse
 
 from PIL import Image
+
+from model.apps import ModelConfig
+from model.generate_caption import caption_image
 
 
 class MainView(View):
@@ -26,7 +30,18 @@ class MainView(View):
     
     def post(self, request, *args, **kwargs):
         image = self.process_image(request.FILES['image'])
+        caption = caption_image(
+            image,
+            ModelConfig.encoder,
+            ModelConfig.decoder,
+            ModelConfig.word_map,
+            ModelConfig.rev_word_map
+        )
         if request.is_ajax():
-            return JsonResponse({'success': True, 'image': f'{settings.MEDIA_URL}{self.image_name}'})
+            return JsonResponse({
+                'success': True,
+                'image': f'{settings.MEDIA_URL}{self.image_name}',
+                'caption': caption
+            })
         url = reverse('main')
         return HttpResponseRedirect()

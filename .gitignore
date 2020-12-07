@@ -16,3 +16,4 @@ cache/
 *.pkl
 .prettierignore
 .env
+wordmap.json

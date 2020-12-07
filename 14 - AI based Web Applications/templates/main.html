@@ -90,13 +90,13 @@
 {% endblock %} {% block javascript %}
 <script>
   $(document).ready(function () {
-    function renderOutputBlock(
-      outputBlock,
-      outputImage,
-      outputImageSrc,
-      isDisplay
-    ) {
-      outputImage.attr('src', outputImageSrc);
+    function renderOutputBlock(outputImageSrc, predictedCaption, isDisplay) {
+      $('#input-image').attr(
+        'src',
+        outputImageSrc + '?' + new Date().getTime()
+      );
+      $('#predicted-caption').text(predictedCaption);
+      var outputBlock = $('#output-block');
       if (isDisplay && outputBlock.hasClass('d-none')) {
         outputBlock.removeClass('d-none');
       } else if (!isDisplay && !outputBlock.hasClass('d-none')) {
@@ -122,12 +122,10 @@
     var formMethod = form.attr('method');
     var formEndpoint = form.attr('data-endpoint');
     var formEncType = form.attr('enctype');
-    var outputBlock = $('#output-block');
-    var outputImage = $('#input-image');
 
     form.submit(function (event) {
       event.preventDefault();
-      renderOutputBlock(outputBlock, outputImage, '', false);
+      renderOutputBlock('', '', false);
       var $this = $(this);
       var formButton = $this.find("[type='submit']");
       var formButtonText = formButton.text();
@@ -150,7 +148,7 @@
         success: function (responseData) {
           formIndicator(formButton, formButtonText, false);
           console.log(responseData);
-          renderOutputBlock(outputBlock, outputImage, responseData.image, true);
+          renderOutputBlock(responseData.image, responseData.caption, true);
         },
         error: function (error) {
           alert('An error occured.');
