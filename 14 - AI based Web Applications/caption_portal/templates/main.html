@@ -147,7 +147,6 @@
         contentType: false,
         success: function (responseData) {
           formIndicator(formButton, formButtonText, false);
-          console.log(responseData);
           renderOutputBlock(responseData.image, responseData.caption, true);
         },
         error: function (error) {

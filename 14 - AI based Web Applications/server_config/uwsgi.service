@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve caption portal
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/caption_portal
+Environment="PATH=/home/ubuntu/venv/bin"
+ExecStart=/home/ubuntu/venv/bin/uwsgi --ini /home/ubuntu/conf/uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target
