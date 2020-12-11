@@ -51,3 +51,7 @@ Deploy a image caption generation model. To see the code go [here](12%20-%20Imag
 ## AI for Sound
 
 Train and deploy a simple speech-to-text model. To see the code go [here](13%20-%20AI%20for%20Sound)
+
+## AI Based Web Applications
+
+Host a previous assignment on AWS EC2 instance using a web application framework. To see the code go [here](14%20-%20AI%20based%20Web%20Applications)

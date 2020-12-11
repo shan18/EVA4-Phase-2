@@ -1,9 +1,9 @@
-# Session 14 - AI-based Web Applications using Flask
+# Session 14 - AI-based Web Applications
 
-The goal of this assignment is to deploy the image captioning model from the [last assignment](../12%-%Image%Captioning/) on an AWS EC2 instance.
+The goal of this assignment is to deploy the image captioning model from the [last assignment](../12%20-%20Image%20Captioning/) on an AWS EC2 instance.
 
 The model is served as a django web application. The django code can
-be found in the [caption_portal](caption_porta/) directory and the server configuration code for AWS can be found in the [server_config](server_config/) directory.
+be found in the [caption_portal](caption_portal/) directory and the server configuration code for AWS can be found in the [server_config](server_config/) directory.
 
 ## AWS Setup
 
